@@ -1,27 +1,28 @@
-# React + TypeScript + Vite
+# findU
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Social app for finding nice people to discover things with
 
-Currently, two official plugins are available:
+Creating a react project:
+cd root folder
+npm install
+npm run dev
+npm install bootstrap in findU package folder
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Installation:
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs
+npm install vite --save-dev - Version 4.4.9 is in use
 
-## Expanding the ESLint configuration
+PW:
+KfW: test
+Windows lokal: test123
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Setup:
 
-- Configure the top-level `parserOptions` property like this:
+1. Prettier: Format Changes to Prettier
+2. Oh my zsh:
+   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+Useful Keybinds:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Control + D & Tastenkombi: Markiert mehrere Zeilen und ändert Values
