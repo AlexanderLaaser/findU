@@ -11,7 +11,8 @@ npm install bootstrap in findU package folder
 Installation:
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
-npm install vite --save-dev - Version 4.4.9 is in use
+npm install
+vite --save-dev - Version 4.4.9 is in use
 
 PW:
 KfW: test
