@@ -1,0 +1,36 @@
+.compony-color {
+    color: #76BA32; 
+}
+
+.company-font {
+    font-family: 'Montserrat' !important;
+}
+
+.logo-size {
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.company-button-green {
+    background-color: #76BA32 !important;
+    color: white;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.company-button-no-color {
+    color: white;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.create-ticket-button {
+    width: 20%;
+    height: 3em;
+    display: grid;
+    place-items: center;
+}
+
+.date-picker {
+    border-radius: 5px;
+}
