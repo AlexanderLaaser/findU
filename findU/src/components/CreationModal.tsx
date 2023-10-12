@@ -59,7 +59,7 @@ function CreationModal() {
                 className="date-picker company-font"
                 showIcon
                 selected={startDate}
-                onChange={(date) => setStartDate(date)}
+                onChange={(date) => setStartDate(date || new Date())}
               />
             </Form.Group>
           </Form>

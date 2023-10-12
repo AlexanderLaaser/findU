@@ -14,23 +14,42 @@
 .company-button-green {
     background-color: #76BA32 !important;
     color: white;
-    border-radius: 10px;
+    border-radius: 0.25rem;
     border: 0px;
+    padding: 0.5rem;
 }
 
 .company-button-no-color {
     color: white;
-    border-radius: 10px;
+    border-radius: 0.25rem;
     border: 0px;
 }
 
 .create-ticket-button {
     width: 20%;
     height: 3em;
-    display: grid;
-    place-items: center;
 }
 
 .date-picker {
-    border-radius: 5px;
+    border-radius: 0.25rem;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    width: 100%;
+    font-family: 'Montserrat' !important;
+}
+
+.search-input {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 350px;
+    margin-right: 0.5rem;
 }
