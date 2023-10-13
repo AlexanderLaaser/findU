@@ -14,10 +14,14 @@ sudo apt-get install -y nodejs
 npm install
 vite --save-dev - Version 4.4.9 is in use
 
+# Frontend execution
+ls frontend
+npm install
+npm run dev
+
 # Backend
 Installtion Apollo Server: 
 npm install @apollo/server graphql
-
 
 # Information
 PW:
