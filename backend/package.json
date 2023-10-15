@@ -2,9 +2,12 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "graphql-server-setup.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "tsc",
+    "build": "npm run compile",
+    "start": "node ./dist/src/graphql-server-setup.js"
   },
   "keywords": [],
   "author": "",
