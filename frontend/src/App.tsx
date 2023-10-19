@@ -10,10 +10,10 @@ function App() {
       <header id="header">
         <AppHeader></AppHeader>
       </header>
-      <body id="body">
+      <main id="body">
         <CreationModal></CreationModal>
         <SearchBar></SearchBar>
-      </body>
+      </main>
     </div>
   );
 }
