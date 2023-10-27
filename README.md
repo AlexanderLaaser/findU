@@ -29,12 +29,6 @@ npm run build -> building the GraphQL js files in dist folder
 npm run start -> starting the graphQL-Servers
 IP-in der Datenbank hinterlegen
 
-# Information
-PW:
-KfW: test
-Windows-local: test123
-Mac-loca: xita145
-
 # Setup
 Testing typescript locally:
 npm i -g typescript
