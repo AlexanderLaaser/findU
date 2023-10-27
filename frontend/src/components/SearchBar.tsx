@@ -14,8 +14,6 @@ function SearchBar() {
       setSearchResults(data.getActivities);
     }
   }, [loading, error, data]);
-
-  if (loading) return "Loading...";
   if (error) return `Error! ${error.message}`;
 
   const handleSearch = (value: string) => {
@@ -25,36 +23,51 @@ function SearchBar() {
     setSearchResults(filteredResults);
   };
 
+  const handleResultClick = (resultName: string) => {
+    setSearchValue(resultName);
+    setSearchResults([]);
+  };
+
   return (
-    <div className="mb-2">
-      <form className="search-form">
-        <input
-          type="text"
-          className="search-input"
-          placeholder="Search..."
-          value={searchValue}
-          onChange={(e) => {
-            const inputValue = e.target.value;
-            setSearchValue(inputValue);
-            handleSearch(inputValue);
-          }}
-          id="searchbar"
-        />
-        <button type="submit" className="company-button-green">
-          Search
-        </button>
-      </form>
-      {searchValue && (
-        <div className="search-suggestions">
-          <ListGroup>
-            {searchResults.map((result, index) => (
-              <ListGroup.Item key={index} action>
-                {result.name}
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
+    <div className="search">
+      <div className="searchparts">
+        <form>
+          <input
+            type="text"
+            className="searchinput"
+            placeholder="Search..."
+            value={searchValue}
+            onChange={(e) => {
+              const inputValue = e.target.value;
+              setSearchValue(inputValue);
+              handleSearch(inputValue);
+            }}
+            id="searchbar"
+          />
+          <div className="searchresults">
+            {searchValue && (
+              <div className="searchresults">
+                <ListGroup>
+                  {searchResults.map((result, index) => (
+                    <ListGroup.Item
+                      key={index}
+                      action
+                      onClick={() => handleResultClick(result.name)}
+                    >
+                      {result.name}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              </div>
+            )}
+          </div>
+        </form>
+        <div className="searchbutton">
+          <button type="submit" className="company-button-green">
+            Search
+          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 }

@@ -5,7 +5,6 @@ import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useMutation } from "@apollo/client";
-//import ADD_ACTIVTY from "../graphql/addActivity.ts";
 import { ADD_ACTIVITY } from "../constants/GraphQL";
 
 function CreationModal() {
@@ -31,7 +30,7 @@ function CreationModal() {
   return (
     <>
       <div
-        className="mb-2 d-flex justify-content-center align-items-center"
+        className="mb-2 d-flex justify-content-center align-items-center header"
         style={{ height: "30vh" }}
       >
         <Button
