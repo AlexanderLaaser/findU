@@ -4,18 +4,33 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useMutation } from "@apollo/client";
+import { ADD_ACTIVITY } from "../constants/GraphQL";
 
 function CreationModal() {
   const [show, setShow] = useState(false); //Das ist die funtion die das Modal anzeigt
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [startDate, setStartDate] = useState(new Date());
+  const [name, setName] = useState(""); // State für den Namen
+  const [description, setDescription] = useState(""); // State für die Beschreibung
+  const [addActivityMutation] = useMutation(ADD_ACTIVITY);
+
+  const createActivity = () => {
+    const activityInput = {
+      name: name,
+      description: description,
+      date: startDate,
+    };
+
+    addActivityMutation({ variables: { activityInput } });
+    handleClose();
+  };
 
   return (
     <>
       <div
-        className="mb-2 d-flex justify-content-center align-items-center"
+        className="mb-2 d-flex justify-content-center align-items-center header"
         style={{ height: "30vh" }}
       >
         <Button
@@ -40,14 +55,22 @@ function CreationModal() {
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Name</Form.Label>
-              <Form.Control placeholder="Example name" autoFocus />
+              <Form.Control
+                placeholder="Example name"
+                autoFocus
+                onChange={(e) => setName(e.target.value)}
+              />
             </Form.Group>
             <Form.Group
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label>Description</Form.Label>
-              <Form.Control as="textarea" rows={3} />
+              <Form.Control
+                as="textarea"
+                rows={3}
+                onChange={(e) => setDescription(e.target.value)}
+              />
             </Form.Group>
             <Form.Group
               className="mb-3 date-form "
@@ -72,8 +95,12 @@ function CreationModal() {
           >
             Close
           </Button>
-          <Button className="company-button-green" onClick={handleClose}>
-            Save Changes
+          <Button
+            id="createButton"
+            className="company-button-green"
+            onClick={createActivity}
+          >
+            Create activity
           </Button>
         </Modal.Footer>
       </Modal>
