@@ -1,19 +1,26 @@
-import AppHeader from "./components/Header.tsx";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/General.css";
-import "./styles/Searchbar.css";
 import CreationModal from "./components/CreationModal.tsx";
+import Headernew from "./components/Header.tsx";
+import { createTheme, ThemeProvider } from "@mui/material";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: ["Montserrat", "cursive"].join(","),
+  },
+});
 
 function App() {
   return (
-    <div>
-      <header id="header">
-        <AppHeader></AppHeader>
-      </header>
-      <main id="body">
-        <CreationModal></CreationModal>
-      </main>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <header id="header">
+          <Headernew></Headernew>
+        </header>
+        <main id="body">
+          <CreationModal></CreationModal>
+        </main>
+      </div>
+    </ThemeProvider>
   );
 }
 

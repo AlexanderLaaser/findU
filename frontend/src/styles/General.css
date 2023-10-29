@@ -33,3 +33,27 @@
 .date-picker {
     border-radius: 0.25rem;
 }
+
+.MuiAutocomplete-inputRoot{
+    background-color:rgb(255, 255, 255);
+    height: 40px;
+    box-sizing:border-box;
+}
+
+.MuiOutlinedInput-input{
+    box-sizing:border-box;
+}
+
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+    box-sizing: border-box !important;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+    box-sizing: border-box !important;
+}
+
+.css-tzssek-MuiSvgIcon-root {
+    font-size: 2.5rem !important;
+    padding-left: 2%;
+}
+
