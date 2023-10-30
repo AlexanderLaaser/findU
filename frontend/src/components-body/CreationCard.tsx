@@ -2,19 +2,10 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import CreationModal from "./CreationModal.tsx";
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
-
-export default function CreationCard() {
+function CreationCard() {
   return (
     <Card>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -26,11 +17,11 @@ export default function CreationCard() {
       </Box>
       <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
         <CardActions>
-          <Button variant="contained" size="small">
-            Create
-          </Button>
+          <CreationModal></CreationModal>
         </CardActions>
       </Box>
     </Card>
   );
 }
+
+export default CreationCard;

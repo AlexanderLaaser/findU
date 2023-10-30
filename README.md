@@ -16,6 +16,8 @@ sudo apt-get install -y nodejs
 npm install
 vite --save-dev - Version 4.4.9 is in use
 
+npm install @reduxjs/toolkit react-redux
+
 # Frontend MUI
 
 npm install @mui/material @emotion/react @emotion/styled

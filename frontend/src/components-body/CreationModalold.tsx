@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useMutation } from "@apollo/client";
 import { ADD_ACTIVITY } from "../constants/GraphQL";
 
-function CreationModal() {
+function CreationModalold() {
   const [show, setShow] = useState(false); //Das ist die funtion die das Modal anzeigt
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -108,4 +108,4 @@ function CreationModal() {
   );
 }
 
-export default CreationModal;
+export default CreationModalold;
