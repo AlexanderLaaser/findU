@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import CreationModal from "./components/CreationModal.tsx";
-import Headernew from "./components/Header.tsx";
+import CreationModal from "./components-body/CreationModal.tsx";
+import Headernew from "./components-header/AppHeader.tsx";
 import { createTheme, ThemeProvider } from "@mui/material";
 
 const theme = createTheme({
