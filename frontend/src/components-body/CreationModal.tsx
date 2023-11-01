@@ -20,15 +20,24 @@ const ListItem = styled("li")(({ theme }) => ({
 }));
 
 const style = {
-  position: "absolute" as "absolute",
+  position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
   bgcolor: "background.paper",
   boxShadow: 5,
   borderRadius: "0.25rem",
-  p: 10,
+  p: 5,
+  display: "flex", //
+  flexDirection: "column",
+  alignItems: "center",
+  "& .MuiTextField-root": {
+    m: 2,
+    width: "75%",
+    margin: 0,
+    marginTop: 3,
+    minWidth: 400,
+  },
 };
 
 function CreationModal() {
@@ -60,9 +69,6 @@ function CreationModal() {
         onClose={() => dispatch({ type: REDUCER_ACTION_TYPE.CLOSE })}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        sx={{
-          borderRadius: "0.25rem",
-        }}
       >
         <Box sx={style}>
           <Typography
@@ -75,33 +81,21 @@ function CreationModal() {
           >
             Creating the act
           </Typography>
-          <Box
-            component="form"
-            sx={{
-              "& .MuiTextField-root": { m: 0, width: "38ch" },
-            }}
-            noValidate
-            autoComplete="off"
-          >
-            <TextField
-              id="filled-basic"
-              label="Name"
-              variant="filled"
-              size="small"
-            />
-            <TextField
-              id="filled-multiline-flexible"
-              label="Description"
-              multiline
-              maxRows={4}
-              variant="filled"
-              size="small"
-            />
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DatePicker />
-            </LocalizationProvider>
-          </Box>
-
+          <TextField
+            id="outlined-multiline-flexible"
+            label="Name"
+            multiline
+            maxRows={4}
+          />
+          <TextField
+            id="outlined-multiline-static"
+            label="Description"
+            multiline
+            rows={4}
+          />
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker label="Day of act" sx={{}} />
+          </LocalizationProvider>
           <Paper
             sx={{
               display: "flex",
@@ -110,6 +104,8 @@ function CreationModal() {
               listStyle: "none",
               p: 0.5,
               m: 0,
+              marginTop: 3,
+              maxWidth: "75%",
             }}
             component="ul"
           >
@@ -128,6 +124,7 @@ function CreationModal() {
                     onDelete={
                       data.label === "React" ? undefined : handleDelete(data)
                     }
+                    color="primary"
                   />
                 </ListItem>
               );

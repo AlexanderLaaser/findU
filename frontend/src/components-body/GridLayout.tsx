@@ -2,6 +2,7 @@ import { Box, Grid } from "@mui/material";
 import CreationCard from "./CreationCard.tsx";
 import RightCard from "./RightCard.tsx";
 import LeftCard from "./LeftCard.tsx";
+import "../styles/components-header.css";
 
 export default function GridLayout() {
   return (
