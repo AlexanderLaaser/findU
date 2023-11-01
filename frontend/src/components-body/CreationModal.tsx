@@ -1,9 +1,23 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Chip, Paper, TextField, Typography, styled } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import { useReducer } from "react";
 import { modalReducer } from "../context/Context.tsx";
 import { REDUCER_ACTION_TYPE } from "../context/Context.tsx";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import React from "react";
+import TagFacesIcon from "@mui/icons-material/TagFaces";
+
+interface ChipData {
+  key: number;
+  label: string;
+}
+
+const ListItem = styled("li")(({ theme }) => ({
+  margin: theme.spacing(0.5),
+}));
 
 const style = {
   position: "absolute" as "absolute",
@@ -12,13 +26,27 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
+  boxShadow: 5,
+  borderRadius: "0.25rem",
+  p: 10,
 };
 
 function CreationModal() {
   const [state, dispatch] = useReducer(modalReducer, { isOpen: false });
+
+  const [chipData, setChipData] = React.useState<readonly ChipData[]>([
+    { key: 0, label: "Angular" },
+    { key: 1, label: "jQuery" },
+    { key: 2, label: "Polymer" },
+    { key: 3, label: "React" },
+    { key: 4, label: "Vue.js" },
+  ]);
+
+  const handleDelete = (chipToDelete: ChipData) => () => {
+    setChipData((chips) =>
+      chips.filter((chip) => chip.key !== chipToDelete.key)
+    );
+  };
   return (
     <div>
       <Button
@@ -32,14 +60,79 @@ function CreationModal() {
         onClose={() => dispatch({ type: REDUCER_ACTION_TYPE.CLOSE })}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        sx={{
+          borderRadius: "0.25rem",
+        }}
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+          <Typography
+            id="modal-modal-title"
+            variant="h5"
+            component="h2"
+            sx={{
+              color: "rgb(25,118,210 )",
+            }}
+          >
+            Creating the act
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <Box
+            component="form"
+            sx={{
+              "& .MuiTextField-root": { m: 0, width: "38ch" },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <TextField
+              id="filled-basic"
+              label="Name"
+              variant="filled"
+              size="small"
+            />
+            <TextField
+              id="filled-multiline-flexible"
+              label="Description"
+              multiline
+              maxRows={4}
+              variant="filled"
+              size="small"
+            />
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DatePicker />
+            </LocalizationProvider>
+          </Box>
+
+          <Paper
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              listStyle: "none",
+              p: 0.5,
+              m: 0,
+            }}
+            component="ul"
+          >
+            {chipData.map((data) => {
+              let icon;
+
+              if (data.label === "React") {
+                icon = <TagFacesIcon />;
+              }
+
+              return (
+                <ListItem key={data.key}>
+                  <Chip
+                    icon={icon}
+                    label={data.label}
+                    onDelete={
+                      data.label === "React" ? undefined : handleDelete(data)
+                    }
+                  />
+                </ListItem>
+              );
+            })}
+          </Paper>
         </Box>
       </Modal>
     </div>

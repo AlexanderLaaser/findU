@@ -23,6 +23,12 @@ npm install @reduxjs/toolkit react-redux
 npm install @mui/material @emotion/react @emotion/styled
 npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
 
+# Frontend Date picker
+npm install @mui/x-date-pickers
+npm install dayjs
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/styled-engine-sc styled-components
+
 # execution
 
 ls frontend
