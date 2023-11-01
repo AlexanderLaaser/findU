@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Headernew from "./components-header/AppHeader.tsx";
 import { Box, Button, createTheme, Modal, ThemeProvider } from "@mui/material";
 import GridLayout from "./components-body/GridLayout.tsx";
-import { useReducer } from "react";
+import { ModalProvider } from "./context/Context.tsx";
 
 const theme = createTheme({
   typography: {
@@ -12,16 +12,18 @@ const theme = createTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div>
-        <header id="header">
-          <Headernew></Headernew>
-        </header>
-        <main id="body">
-          <GridLayout></GridLayout>
-        </main>
-      </div>
-    </ThemeProvider>
+    <ModalProvider>
+      <ThemeProvider theme={theme}>
+        <div>
+          <header id="header">
+            <Headernew></Headernew>
+          </header>
+          <main id="body">
+            <GridLayout></GridLayout>
+          </main>
+        </div>
+      </ThemeProvider>
+    </ModalProvider>
   );
 }
 

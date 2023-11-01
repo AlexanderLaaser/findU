@@ -1,7 +1,9 @@
 import { Box, Typography } from "@mui/material";
-import { Modal } from "react-bootstrap";
+import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-import React from "react";
+import { useReducer } from "react";
+import { modalReducer } from "../context/Context.tsx";
+import { REDUCER_ACTION_TYPE } from "../context/Context.tsx";
 
 const style = {
   position: "absolute" as "absolute",
@@ -16,17 +18,18 @@ const style = {
 };
 
 function CreationModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [state, dispatch] = useReducer(modalReducer, { isOpen: false });
   return (
     <div>
-      <Button variant="contained" onClick={handleOpen}>
+      <Button
+        variant="contained"
+        onClick={() => dispatch({ type: REDUCER_ACTION_TYPE.OPEN })}
+      >
         Create
       </Button>
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={state.isOpen}
+        onClose={() => dispatch({ type: REDUCER_ACTION_TYPE.CLOSE })}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
