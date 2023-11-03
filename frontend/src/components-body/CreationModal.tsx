@@ -20,6 +20,7 @@ const ListItem = styled("li")(({ theme }) => ({
 }));
 
 const style = {
+  width: "28%",
   position: "absolute",
   top: "50%",
   left: "50%",
@@ -33,12 +34,13 @@ const style = {
   alignItems: "center",
   "& .MuiTextField-root": {
     m: 2,
-    width: "75%",
+    width: "100%",
     margin: 0,
     marginTop: 3,
-    minWidth: 400,
+    maxWidth: "100%",
   },
 };
+const datestyle = {};
 
 function CreationModal() {
   const [state, dispatch] = useReducer(modalReducer, { isOpen: false });
@@ -94,7 +96,7 @@ function CreationModal() {
             rows={4}
           />
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker label="Day of act" sx={{}} />
+            <DatePicker label="Day of act" sx={{ datestyle }} />
           </LocalizationProvider>
           <Paper
             sx={{
@@ -105,7 +107,7 @@ function CreationModal() {
               p: 0.5,
               m: 0,
               marginTop: 3,
-              maxWidth: "75%",
+              width: "100%",
             }}
             component="ul"
           >

@@ -11,7 +11,7 @@ export default function Logo() {
         component="div"
         sx={{ display: { xs: "none", sm: "block" } }}
       >
-        acter
+        meeture
       </Typography>
     </Box>
   );
