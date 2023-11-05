@@ -11,6 +11,9 @@ export default function CreationCard() {
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             News
           </Typography>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            tba
+          </Typography>
         </CardContent>
       </Box>
     </Card>

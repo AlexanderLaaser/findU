@@ -41,7 +41,7 @@ interface PlaceType {
   structured_formatting: StructuredFormatting;
 }
 
-export default function AutocompleteGoogleApi() {
+export default function AutoCompleteGoogleInputField() {
   const [value, setValue] = React.useState<PlaceType | null>(null);
   const [inputValue, setInputValue] = React.useState("");
   const [options, setOptions] = React.useState<readonly PlaceType[]>([]);
@@ -117,7 +117,7 @@ export default function AutocompleteGoogleApi() {
   return (
     <Autocomplete
       id="google-map-demo"
-      sx={{ width: 300 }}
+      sx={{ width: "100%", maxWidth: "400px" }}
       getOptionLabel={(option) =>
         typeof option === "string" ? option : option.description
       }
@@ -136,7 +136,7 @@ export default function AutocompleteGoogleApi() {
         setInputValue(newInputValue);
       }}
       renderInput={(params) => (
-        <TextField {...params} label="Add a location" fullWidth />
+        <TextField {...params} label="Location" fullWidth size="small" />
       )}
       renderOption={(props, option) => {
         const matches =
@@ -153,13 +153,10 @@ export default function AutocompleteGoogleApi() {
         return (
           <li {...props}>
             <Grid container alignItems="center">
-              <Grid item sx={{ display: "flex", width: 44 }}>
+              <Grid item sx={{ display: "flex" }}>
                 <LocationOnIcon sx={{ color: "text.secondary" }} />
               </Grid>
-              <Grid
-                item
-                sx={{ width: "calc(100% - 44px)", wordWrap: "break-word" }}
-              >
+              <Grid item sx={{ wordWrap: "break-word" }}>
                 {parts.map((part, index) => (
                   <Box
                     key={index}

@@ -17,7 +17,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import React from "react";
 import AddIcon from "@mui/icons-material/Add";
-import AutocompleteGoogleApi from "../components-body/AutoCompleteGoogleApi.tsx";
+import AutoCompleteGoogleInputField from "./AutoCompleteGoogleInputField.tsx";
 
 interface ChipData {
   key: number;
@@ -30,6 +30,7 @@ const ListItem = styled("li")(({ theme }) => ({
 
 const style = {
   width: "28%",
+  maxWidth: "500px",
   position: "absolute",
   top: "50%",
   left: "50%",
@@ -46,7 +47,7 @@ const style = {
     width: "100%",
     margin: 0,
     marginTop: 3,
-    maxWidth: "100%",
+    maxWidth: "400px",
   },
 };
 
@@ -126,6 +127,7 @@ function CreationModal() {
               // ... andere Props, die Sie dem DatePicker übergeben müssen
             />
           </LocalizationProvider>
+          <AutoCompleteGoogleInputField></AutoCompleteGoogleInputField>
           <Paper
             sx={{
               display: "flex",
@@ -135,9 +137,14 @@ function CreationModal() {
               p: 0.5,
               m: 0,
               marginTop: 3,
-              width: "100%",
+              width: "95%",
+              maxWidth: "500px",
+              "& .MuiPaper-root": {
+                border: "0",
+              },
             }}
             component="ul"
+            variant="outlined"
           >
             {chipData.map((data) => {
               let icon;
@@ -148,6 +155,7 @@ function CreationModal() {
                     label={data.label}
                     onDelete={handleDelete(data)}
                     color="primary"
+                    sx={{ fontSize: "1rem" }}
                   />
                 </ListItem>
               );
@@ -167,11 +175,12 @@ function CreationModal() {
                   label="Category"
                   onClick={toggleInput}
                   variant="outlined"
+                  size="medium"
+                  sx={{ fontSize: "1rem" }}
                 />
               </ListItem>
             )}
           </Paper>
-          <AutocompleteGoogleApi></AutocompleteGoogleApi>
         </Box>
       </Modal>
     </div>
