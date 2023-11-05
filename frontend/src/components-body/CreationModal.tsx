@@ -16,8 +16,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import React from "react";
-import TagFacesIcon from "@mui/icons-material/TagFaces";
 import AddIcon from "@mui/icons-material/Add";
+import AutocompleteGoogleApi from "../components-body/AutoCompleteGoogleApi.tsx";
 
 interface ChipData {
   key: number;
@@ -171,13 +171,7 @@ function CreationModal() {
               </ListItem>
             )}
           </Paper>
-          <Autocomplete
-            apiKey={YOUR_GOOGLE_MAPS_API_KEY}
-            onPlaceSelected={(place) => {
-              console.log(place);
-            }}
-          />
-          ;
+          <AutocompleteGoogleApi></AutocompleteGoogleApi>
         </Box>
       </Modal>
     </div>
