@@ -1,14 +1,8 @@
-# findU
+# Meeture
 
 Social app for finding nice people to discover things with
 
 # Frontend
-
-Creating a react project:
-cd root folder
-npm i
-npm run dev
-npm i bootstrap in findU package folder
 
 Installation React via vite:
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
@@ -18,41 +12,27 @@ vite --save-dev - Version 4.4.9 is in use
 
 npm install @reduxjs/toolkit react-redux
 
-# Frontend MUI
-
-npm install @mui/material @emotion/react @emotion/styled
-npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
-
-# Frontend Date picker
-npm install @mui/x-date-pickers
-npm install dayjs
-npm install @mui/material @emotion/react @emotion/styled
-npm install @mui/styled-engine-sc styled-components
-
 # execution
 
-ls frontend
 npm install
 npm run dev
 
-# Apollo Client Installation
-
-npm install @apollo/client graphql
-
 # Backend
 
-Installtion Apollo Server:
-npm install @apollo/server graphql
-npm run build -> building the GraphQL js files in dist folder
-npm run start -> starting the graphQL-Servers
-IP-in der Datenbank hinterlegen
+IP in Cloud-Mongo-DB hinterlegen
 
-# Setup
+# Testing typescript locally:
 
-Testing typescript locally:
 npm i -g typescript
 npm i --save-dev @types/node
 tsc --version
+
+# Secret-Storing:
+
+gpg --gen-key
+gpg --armor --export your.email@address.com > public-key.gpg
+
+sudo apt-get install git-secret
 
 # VSCode Setup
 

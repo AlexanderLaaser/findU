@@ -1,7 +1,15 @@
-import { Box, Chip, Paper, TextField, Typography, styled } from "@mui/material";
+import {
+  Box,
+  Chip,
+  Input,
+  Paper,
+  TextField,
+  Typography,
+  styled,
+} from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { modalReducer } from "../context/Context.tsx";
 import { REDUCER_ACTION_TYPE } from "../context/Context.tsx";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -9,6 +17,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import React from "react";
 import TagFacesIcon from "@mui/icons-material/TagFaces";
+import AddIcon from "@mui/icons-material/Add";
 
 interface ChipData {
   key: number;
@@ -40,24 +49,34 @@ const style = {
     maxWidth: "100%",
   },
 };
-const datestyle = {};
 
 function CreationModal() {
   const [state, dispatch] = useReducer(modalReducer, { isOpen: false });
 
-  const [chipData, setChipData] = React.useState<readonly ChipData[]>([
-    { key: 0, label: "Angular" },
-    { key: 1, label: "jQuery" },
-    { key: 2, label: "Polymer" },
-    { key: 3, label: "React" },
-    { key: 4, label: "Vue.js" },
-  ]);
+  const [chipData, setChipData] = React.useState<readonly ChipData[]>([]);
+  const [isInputOpen, setIsInputOpen] = useState(false);
+  const [newLabel, setNewLabel] = useState("");
 
   const handleDelete = (chipToDelete: ChipData) => () => {
     setChipData((chips) =>
       chips.filter((chip) => chip.key !== chipToDelete.key)
     );
   };
+
+  const toggleInput = () => {
+    setIsInputOpen(!isInputOpen);
+  };
+
+  const handleAddLabel = () => {
+    const nextKey =
+      chipData.length > 0
+        ? Math.max(...chipData.map((chip) => chip.key)) + 1
+        : 0;
+    setChipData([...chipData, { key: nextKey, label: newLabel }]);
+    setNewLabel("");
+    toggleInput();
+  };
+
   return (
     <div>
       <Button
@@ -81,13 +100,14 @@ function CreationModal() {
               color: "rgb(25,118,210 )",
             }}
           >
-            Creating the act
+            Create your event
           </Typography>
           <TextField
             id="outlined-multiline-flexible"
             label="Name"
             multiline
             maxRows={4}
+            size="small"
           />
           <TextField
             id="outlined-multiline-static"
@@ -96,7 +116,15 @@ function CreationModal() {
             rows={4}
           />
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DatePicker label="Day of act" sx={{ datestyle }} />
+            <DatePicker
+              label="Day of act"
+              slotProps={{
+                textField: {
+                  size: "small", // Stellen Sie sicher, dass Sie die Eigenschaften korrekt zuweisen
+                },
+              }}
+              // ... andere Props, die Sie dem DatePicker übergeben müssen
+            />
           </LocalizationProvider>
           <Paper
             sx={{
@@ -113,25 +141,43 @@ function CreationModal() {
           >
             {chipData.map((data) => {
               let icon;
-
-              if (data.label === "React") {
-                icon = <TagFacesIcon />;
-              }
-
               return (
                 <ListItem key={data.key}>
                   <Chip
                     icon={icon}
                     label={data.label}
-                    onDelete={
-                      data.label === "React" ? undefined : handleDelete(data)
-                    }
+                    onDelete={handleDelete(data)}
                     color="primary"
                   />
                 </ListItem>
               );
             })}
+
+            {isInputOpen ? (
+              <Input
+                value={newLabel}
+                onChange={(e) => setNewLabel(e.target.value)}
+                onBlur={handleAddLabel}
+                autoFocus
+              />
+            ) : (
+              <ListItem>
+                <Chip
+                  icon={<AddIcon />}
+                  label="Category"
+                  onClick={toggleInput}
+                  variant="outlined"
+                />
+              </ListItem>
+            )}
           </Paper>
+          <Autocomplete
+            apiKey={YOUR_GOOGLE_MAPS_API_KEY}
+            onPlaceSelected={(place) => {
+              console.log(place);
+            }}
+          />
+          ;
         </Box>
       </Modal>
     </div>

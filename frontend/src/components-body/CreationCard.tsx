@@ -11,7 +11,7 @@ function CreationCard() {
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <CardContent>
           <Typography variant="h5" component="div">
-            Set up your acts ...
+            Start your adventure ...
           </Typography>
         </CardContent>
       </Box>
