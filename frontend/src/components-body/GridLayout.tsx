@@ -10,16 +10,16 @@ export default function GridLayout() {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      height="20vh"
+      height="15vh"
     >
-      <Grid container spacing={4} maxWidth="70%">
-        <Grid item xs={3.5}>
+      <Grid container spacing={2} width="70%" maxWidth="1200px">
+        <Grid item xs={3}>
           <LeftCard></LeftCard>
         </Grid>
-        <Grid item xs={5}>
+        <Grid item xs={6}>
           <CreationCard></CreationCard>
         </Grid>
-        <Grid item xs={3.5}>
+        <Grid item xs={3}>
           <RightCard></RightCard>
         </Grid>
       </Grid>

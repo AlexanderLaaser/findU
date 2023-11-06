@@ -18,6 +18,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import AutoCompleteGoogleInputField from "./AutoCompleteGoogleInputField.tsx";
+import { theme } from "../../src/App.tsx";
 
 interface ChipData {
   key: number;
@@ -83,6 +84,7 @@ function CreationModal() {
       <Button
         variant="contained"
         onClick={() => dispatch({ type: REDUCER_ACTION_TYPE.OPEN })}
+        style={{ backgroundColor: theme.palette.companycolor.main }}
       >
         Create
       </Button>

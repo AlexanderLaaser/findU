@@ -5,5 +5,8 @@
     "git-secret": "^1.0.5",
     "graphql": "^16.8.1",
     "mongodb": "^6.1.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.5"
   }
 }
