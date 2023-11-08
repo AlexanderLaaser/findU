@@ -1,29 +1,54 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useRef, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_ACTIVITIES } from "../constants/GraphQL";
 import { Activity } from "../interfaces/Activity";
 
 export default function Searchbar2() {
+  const [activities, setActivities] = useState<Activity[]>([]);
   const [searchResults, setSearchResults] = useState<Activity[]>([]);
+  const [searchInput, setSearchInput] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const { loading, error, data } = useQuery(GET_ACTIVITIES);
-  const [searchInput, setSearchInput] = useState("");
 
   React.useEffect(() => {
     if (!loading && !error && data) {
-      setSearchResults(data.getActivities);
-      console.log("Geht");
+      setActivities(data.getActivities);
     }
   }, [loading, error, data]);
 
   if (error) return `Error! ${error.message}`;
 
   const handleFocus = () => setIsFocused(true);
-  const handleBlur = () => setIsFocused(false);
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      if (
+        !searchInputRef.current ||
+        document.activeElement !== searchInputRef.current
+      ) {
+        setIsFocused(false);
+      }
+    }, 100); // Verzögerung von 100 Millisekunden
+  };
+
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  function handleSearchInput(event: ChangeEvent<HTMLInputElement>) {
+    setSearchInput(event.target.value);
+    setSearchResults(
+      activities.filter((Activity) =>
+        Activity.name.toLowerCase().includes(event.target.value.toLowerCase())
+      )
+    );
+    setIsFocused(true);
+  }
+
   const handleSearchSelect = (name: string) => {
-    console.log("Selected name:", name); // Zur Fehlersuche hinzugefügt
     setSearchInput(name);
     setIsFocused(false);
+    if (searchInputRef.current) {
+      searchInputRef.current.blur();
+    }
   };
 
   return (
@@ -44,30 +69,30 @@ export default function Searchbar2() {
           />
         </svg>
         <input
+          ref={searchInputRef}
           type="text"
           placeholder="Search"
           className="w-full py-3 pl-12 pr-4 text-gray-500 border rounded-md outline-none bg-company-color-super-light focus:bg-white"
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onChange={handleSearchInput} // Stellt sicher, dass Eingaben den State aktualisieren
           value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)} // Stellt sicher, dass Eingaben den State aktualisieren
         />
       </div>
       {isFocused && searchResults.length > 0 && (
-        <ul className="absolute top-full left-0 w-full bg-white shadow-lg rounded-lg z-20 overflow-hidden text-black">
-          {searchResults.map((activity, index) => (
-            <li
-              key={index}
+        <div className="absolute top-full left-0 w-full bg-white shadow-lg rounded-lg z-20 overflow-hidden text-black">
+          {searchResults.map((activity) => (
+            <div
+              key={activity.id}
               className="p-2 hover:bg-company-color-light"
               onClick={() => {
-                console.log("Clicked on:", activity.name);
-                handleSearchSelect(activity.name); // Überprüfen, ob der Klick registriert wird
+                handleSearchSelect(activity.name);
               }}
             >
               {activity.name}
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

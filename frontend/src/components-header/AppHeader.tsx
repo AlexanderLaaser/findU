@@ -8,20 +8,19 @@ import UserDropdown from "./UserDropdown.tsx";
 export default function PrimarySearchAppBar() {
   return (
     <AppBar position="relative" style={{ backgroundColor: "White" }}>
-      <Toolbar style={{ display: "flex", justifyContent: "center" }}>
-        <Box
-          style={{ flexGrow: 1, display: "flex", justifyContent: "flex-start" }}
-        >
+      <Toolbar style={{}}>
+        <Box style={{ flexGrow: 1 }}>
           <CompanyBranding></CompanyBranding>
         </Box>
-        <Searchbar2></Searchbar2>
+        <div className="absolute left-0 right-0">
+          <Searchbar2></Searchbar2>
+        </div>
 
         <Box
           style={{
             flexGrow: 1,
             display: "flex",
             justifyContent: "flex-end",
-            width: "13%",
           }}
         >
           <UserDropdown></UserDropdown>
