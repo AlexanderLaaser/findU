@@ -1,26 +1,33 @@
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import "/home/alex/findU/frontend/src/styles/components-header.css";
-import Searchbar from "./Searchbar.tsx";
-import Icons from "./Icons.tsx";
-import { Link } from "@mui/material";
-import { theme } from "../../src/App.tsx";
+import Searchbar2 from "./Searchbar2.tsx";
+import CompanyBranding from "../components-header/Logo.tsx";
+import UserDropdown from "./UserDropdown.tsx";
 
 export default function PrimarySearchAppBar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position="static"
-        style={{ backgroundColor: theme.palette.background.main }}
-      >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Link href="/"></Link>
-          <Searchbar></Searchbar>
-          <Icons></Icons>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <AppBar position="relative" style={{ backgroundColor: "White" }}>
+      <Toolbar style={{ display: "flex", justifyContent: "center" }}>
+        <Box
+          style={{ flexGrow: 1, display: "flex", justifyContent: "flex-start" }}
+        >
+          <CompanyBranding></CompanyBranding>
+        </Box>
+        <Searchbar2></Searchbar2>
+
+        <Box
+          style={{
+            flexGrow: 1,
+            display: "flex",
+            justifyContent: "flex-end",
+            width: "13%",
+          }}
+        >
+          <UserDropdown></UserDropdown>
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 }
 //<Box component="img" sx={{ height: 54 }} alt="Logo" src={Logo} />

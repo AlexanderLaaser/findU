@@ -18,7 +18,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import React from "react";
 import AddIcon from "@mui/icons-material/Add";
 import AutoCompleteGoogleInputField from "./AutoCompleteGoogleInputField.tsx";
-import { theme } from "../../src/App.tsx";
+import { theme } from "../App.tsx";
 
 interface ChipData {
   key: number;

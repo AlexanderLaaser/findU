@@ -62,4 +62,8 @@
     border: 0!important;
 }
 
+.myIcon {
+    fill: #FF5733 !important; /* Überschreibt die bestehende Farbe */
+  }
+
 
