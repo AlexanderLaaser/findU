@@ -1,33 +1,16 @@
-import {
-  Box,
-  Chip,
-  Input,
-  Paper,
-  TextField,
-  Typography,
-  styled,
-} from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import { modalReducer } from "../context/Context.tsx";
 import { REDUCER_ACTION_TYPE } from "../context/Context.tsx";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import React from "react";
-import AddIcon from "@mui/icons-material/Add";
 import AutoCompleteGoogleInputField from "./AutoCompleteGoogleInputField.tsx";
 import { theme } from "../App.tsx";
-
-interface ChipData {
-  key: number;
-  label: string;
-}
-
-const ListItem = styled("li")(({ theme }) => ({
-  margin: theme.spacing(0.5),
-}));
+import { Chip, ChipsInput, initTE } from "tw-elements";
+initTE({ Chip, ChipsInput });
 
 const style = {
   width: "28%",
@@ -55,30 +38,6 @@ const style = {
 function CreationModal() {
   const [state, dispatch] = useReducer(modalReducer, { isOpen: false });
 
-  const [chipData, setChipData] = React.useState<readonly ChipData[]>([]);
-  const [isInputOpen, setIsInputOpen] = useState(false);
-  const [newLabel, setNewLabel] = useState("");
-
-  const handleDelete = (chipToDelete: ChipData) => () => {
-    setChipData((chips) =>
-      chips.filter((chip) => chip.key !== chipToDelete.key)
-    );
-  };
-
-  const toggleInput = () => {
-    setIsInputOpen(!isInputOpen);
-  };
-
-  const handleAddLabel = () => {
-    const nextKey =
-      chipData.length > 0
-        ? Math.max(...chipData.map((chip) => chip.key)) + 1
-        : 0;
-    setChipData([...chipData, { key: nextKey, label: newLabel }]);
-    setNewLabel("");
-    toggleInput();
-  };
-
   return (
     <div>
       <Button
@@ -100,10 +59,10 @@ function CreationModal() {
             variant="h5"
             component="h2"
             sx={{
-              color: "rgb(25,118,210 )",
+              color: theme.palette.companycolor.main,
             }}
           >
-            Create your event
+            Create your activity
           </Typography>
           <TextField
             id="outlined-multiline-flexible"
@@ -123,66 +82,49 @@ function CreationModal() {
               label="Day of act"
               slotProps={{
                 textField: {
-                  size: "small", // Stellen Sie sicher, dass Sie die Eigenschaften korrekt zuweisen
+                  size: "small",
                 },
               }}
-              // ... andere Props, die Sie dem DatePicker übergeben müssen
             />
           </LocalizationProvider>
           <AutoCompleteGoogleInputField></AutoCompleteGoogleInputField>
-          <Paper
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              listStyle: "none",
-              p: 0.5,
-              m: 0,
-              marginTop: 3,
-              width: "95%",
-              maxWidth: "500px",
-              "& .MuiPaper-root": {
-                border: "0",
-              },
-            }}
-            component="ul"
-            variant="outlined"
+          <div
+            data-te-chip-init
+            data-te-ripple-init
+            className="[word-wrap: break-word] my-[5px] mr-4 flex h-[32px] cursor-pointer items-center justify-between rounded-[16px] bg-[#eceff1] px-[12px] py-0 text-[13px] font-normal normal-case leading-loose text-[#4f4f4f] shadow-none transition-[opacity] duration-300 ease-linear hover:!shadow-none active:bg-[#cacfd1] dark:bg-neutral-600 dark:text-gray-200"
+            data-te-close="true"
           >
-            {chipData.map((data) => {
-              let icon;
-              return (
-                <ListItem key={data.key}>
-                  <Chip
-                    icon={icon}
-                    label={data.label}
-                    onDelete={handleDelete(data)}
-                    color="primary"
-                    sx={{ fontSize: "1rem" }}
-                  />
-                </ListItem>
-              );
-            })}
+            x
+          </div>
 
-            {isInputOpen ? (
-              <Input
-                value={newLabel}
-                onChange={(e) => setNewLabel(e.target.value)}
-                onBlur={handleAddLabel}
-                autoFocus
-              />
-            ) : (
-              <ListItem>
-                <Chip
-                  icon={<AddIcon />}
-                  label="Category"
-                  onClick={toggleInput}
-                  variant="outlined"
-                  size="medium"
-                  sx={{ fontSize: "1rem" }}
-                />
-              </ListItem>
-            )}
-          </Paper>
+          <div className="flex w-full flex-wrap justify-center">
+            <div
+              data-te-chips-input-init
+              data-te-chips-placeholder
+              className="mb-0 min-h-[45px] border-none pb-0 shadow-none outline-none transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:cursor-text"
+            ></div>
+          </div>
+
+          <a
+            href="#_"
+            className="inline-flex items-center w-full px-5 py-3 mb-3 mr-1 text-base font-semibold text-white no-underline align-middle bg-red-500 border border-transparent border-solid rounded-md cursor-pointer select-none sm:mb-0 sm:w-auto hover:bg-red-600 hover:bg-red-600 hover:text-white focus-within:bg-red-600 focus-within:bg-red-600"
+          >
+            Create Activity
+            <svg
+              className="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-strokeLinecap="round"
+                strokeLinejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              ></path>
+            </svg>
+          </a>
         </Box>
       </Modal>
     </div>

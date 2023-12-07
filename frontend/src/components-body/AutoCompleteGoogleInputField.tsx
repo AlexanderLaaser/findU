@@ -6,10 +6,9 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { debounce } from "@mui/material/utils";
-import { YOUR_GOOGLE_MAPS_API_KEY } from "../keys.tsx";
 import parse from "autosuggest-highlight/parse";
 
-const GOOGLE_MAPS_API_KEY = YOUR_GOOGLE_MAPS_API_KEY;
+const GOOGLE_MAPS_API_KEY = "AIzaSyB2qb4G_KtYTJf4pgTAbwJDySIw75sIM-s";
 
 function loadScript(src: string, position: HTMLElement | null, id: string) {
   if (!position) {
