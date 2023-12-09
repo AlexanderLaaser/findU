@@ -11,14 +11,14 @@ export let theme = createTheme({
   palette: {
     background: {
       main: "White",
-      light: "#...", // Optional: definieren Sie weitere Farbtöne
+      light: "#...",
       dark: "#...",
     },
     companycolor: {
-      // Definieren Sie Ihre benutzerdefinierte Farbe hier
+      //
       main: "#EC4F46",
-      light: "#...", // Optional: definieren Sie weitere Farbtöne
-      dark: "#...", // Optional: definieren Sie weitere Farbtöne
+      light: "#...",
+      dark: "#...",
     },
   },
 });

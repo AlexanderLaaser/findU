@@ -3,7 +3,6 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/tw-elements/dist/js/**/*.js"
   ],
   theme: {
     extend: 
@@ -18,8 +17,7 @@ export default {
       sans: ['Montserrat', 'sans-serif'],
     },
   },
-  plugins: [require("tw-elements/dist/plugin.cjs")],
-  darkMode: "class"
+  plugins: [],
 }
 
 

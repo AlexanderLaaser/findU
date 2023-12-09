@@ -9,12 +9,12 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import AutoCompleteGoogleInputField from "./AutoCompleteGoogleInputField.tsx";
 import { theme } from "../App.tsx";
-import { Chip, ChipsInput, initTE } from "tw-elements";
-initTE({ Chip, ChipsInput });
+import Tags from "./Tags.tsx";
 
 const style = {
   width: "28%",
   maxWidth: "500px",
+  minWidth: "300px",
   position: "absolute",
   top: "50%",
   left: "50%",
@@ -88,22 +88,7 @@ function CreationModal() {
             />
           </LocalizationProvider>
           <AutoCompleteGoogleInputField></AutoCompleteGoogleInputField>
-          <div
-            data-te-chip-init
-            data-te-ripple-init
-            className="[word-wrap: break-word] my-[5px] mr-4 flex h-[32px] cursor-pointer items-center justify-between rounded-[16px] bg-[#eceff1] px-[12px] py-0 text-[13px] font-normal normal-case leading-loose text-[#4f4f4f] shadow-none transition-[opacity] duration-300 ease-linear hover:!shadow-none active:bg-[#cacfd1] dark:bg-neutral-600 dark:text-gray-200"
-            data-te-close="true"
-          >
-            x
-          </div>
-
-          <div className="flex w-full flex-wrap justify-center">
-            <div
-              data-te-chips-input-init
-              data-te-chips-placeholder
-              className="mb-0 min-h-[45px] border-none pb-0 shadow-none outline-none transition-all duration-300 ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:cursor-text"
-            ></div>
-          </div>
+          <Tags></Tags>
 
           <a
             href="#_"

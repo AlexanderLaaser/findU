@@ -1,69 +1,96 @@
-.compony-color {
-    color: #76BA32; 
-}
+    .compony-color {
+        color: #76BA32; 
+    }
 
-.company-font {
-    font-family: 'Montserrat' !important;
-}
+    .company-font {
+        font-family: 'Montserrat' !important;
+    }
 
-.logo-size {
-    font-size: 50px;
-    font-weight: 600;
-}
+    .logo-size {
+        font-size: 50px;
+        font-weight: 600;
+    }
 
-.company-button-green {
-    background-color: #76BA32 !important;
-    color: white;
-    border-radius: 0.25rem;
-    border: 0px;
-    padding: 0.5rem;
-}
+    .company-button-green {
+        background-color: #76BA32 !important;
+        color: white;
+        border-radius: 0.25rem;
+        border: 0px;
+        padding: 0.5rem;
+    }
 
-.company-button-no-color {
-    color: white;
-    border-radius: 0.25rem;
-    border: 0px;
-}
+    .company-button-no-color {
+        color: white;
+        border-radius: 0.25rem;
+        border: 0px;
+    }
 
-.create-ticket-button {
-    width: 20%;
-    height: 3em;
-}
+    .create-ticket-button {
+        width: 20%;
+        height: 3em;
+    }
 
-.date-picker {
-    border-radius: 0.25rem;
-}
+    .date-picker {
+        border-radius: 0.25rem;
+    }
 
-.MuiAutocomplete-inputRoot{
-    background-color:rgb(255, 255, 255);
-    height: 40px;
-    box-sizing:border-box;
-}
+    .MuiAutocomplete-inputRoot{
+        background-color:rgb(255, 255, 255);
+        height: 40px;
+        box-sizing:border-box;
+    }
 
-.MuiOutlinedInput-input{
-    box-sizing:border-box;
-}
+    .MuiOutlinedInput-input{
+        box-sizing:border-box;
+    }
 
-.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
-    box-sizing: border-box !important;
-}
+    .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+        box-sizing: border-box !important;
+    }
 
-.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-    box-sizing: border-box !important;
-}
+    .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+        box-sizing: border-box !important;
+    }
 
-.css-tzssek-MuiSvgIcon-root {
-    font-size: 2.5rem !important;
-    padding-left: 2%;
-}
+    .css-tzssek-MuiSvgIcon-root {
+        font-size: 2.5rem !important;
+        padding-left: 2%;
+    }
 
 
-.css-12simxj-MuiPaper-root{
-    border: 0!important;
-}
+    .css-12simxj-MuiPaper-root{
+        border: 0!important;
+    }
 
-.myIcon {
-    fill: #FF5733 !important; /* Überschreibt die bestehende Farbe */
-  }
+    .myIcon {
+        fill: #FF5733 !important; /* Überschreibt die bestehende Farbe */
+    }
+
+    .inputWithAnimation {
+        position: relative;
+        border-radius: 0.375rem; /* entspricht tailwind's rounded-md */
+        
+    }
+    
+    .inputWithAnimation input:focus ~ label,
+    .inputWithAnimation input:not(:placeholder-shown) ~ label {
+        transform: translate(-0.75rem, -1.5rem) scale(0.75);
+        background-color: white;
+        padding: 0 0.25rem;
+    }
+    
+    .inputWithAnimation label {
+        position: absolute;
+        left: 1rem;
+        top: 0.75rem;
+        transition: transform 0.2s ease-in-out;
+        background-color: transparent;
+    }
+    
+    .inputWithAnimation input {
+        padding: 0.75rem;
+        border: none;
+        outline: none;
+    }
 
 

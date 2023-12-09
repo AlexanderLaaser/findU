@@ -1,21 +1,11 @@
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-
 export default function CreationCard() {
   return (
-    <Card>
-      <Box sx={{ display: "flex", flexDirection: "column" }}>
-        <CardContent>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            News
-          </Typography>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            tba
-          </Typography>
-        </CardContent>
-      </Box>
-    </Card>
+    <div className="flex flex-col p-4 border border-gray-200 rounded-lg shadow-md h-80 justify-between bg-white">
+      <h2 className="font-semibold text-lg">News</h2>
+      <p>
+        Add Add Add Add Add Add Add Add Add Add Add Add Add Add Add Add Add Add
+        Add Add Add Add Add Add Add Add Add Add Add Add Add
+      </p>
+    </div>
   );
 }
