@@ -1,7 +1,7 @@
 import "./styles/index.css";
 import AppHeader from "./components-header/AppHeader.tsx";
 import { createTheme, ThemeProvider } from "@mui/material";
-import GridLayout from "./components-body/GridLayout.tsx";
+import GridLayout from "./components-body/Layout.tsx";
 import { ModalProvider } from "./context/Context.tsx";
 
 export let theme = createTheme({
